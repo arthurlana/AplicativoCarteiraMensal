@@ -2,6 +2,7 @@ package com.example.carteiramensal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -82,13 +83,30 @@ public class MainActivity extends AppCompatActivity {
         novoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EventosDB db = new EventosDB(MainActivity.this);
-                db.insereEvento();
+                //EventosDB db = new EventosDB(MainActivity.this);
+                //db.insereEvento();
 
-                Toast.makeText(MainActivity.this, db.getDatabaseName(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, db.getDatabaseName(), Toast.LENGTH_LONG).show();
             }
         });
 
+        entradaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent trocaAct = new Intent(MainActivity.this, VisualizarEventos.class);
+                trocaAct.putExtra("acao",0);
+                startActivity(trocaAct);
+            }
+        });
+
+        saidaBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent trocaAct = new Intent(MainActivity.this, VisualizarEventos.class);
+                trocaAct.putExtra("acao",1);
+                startActivity(trocaAct);
+            }
+        });
     }
 
     private void atualizaMes(int ajuste){
